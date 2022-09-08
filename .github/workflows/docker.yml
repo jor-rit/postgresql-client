@@ -53,7 +53,7 @@ jobs:
       - name: Test image
         run: |
           docker run --rm --network ${{ job.container.network}} --entrypoint pg_isready \
-            $IMAGE_NAME:latest -h postgres -U $DB_USER -p$DB_PASS \
+            -e PGPASSWORD=$DB_PASS $IMAGE_NAME:latest -h postgres -U $DB_USER \
             || exit 1;
           echo "SELECT 'Test';" | \
             docker run --rm --network ${{ job.container.network}} --interactive \
