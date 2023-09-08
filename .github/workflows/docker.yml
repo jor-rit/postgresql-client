@@ -10,9 +10,10 @@ on:
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
+  workflow_dispatch:
 
 env:
-  IMAGE_NAME: postgres-client
+  IMAGE_NAME: ${{ github.event.repository.name }}
   REPO_PATH: ${{ github.repository_owner }}
   DB_NAME: initech
   DB_USER: user
@@ -24,7 +25,6 @@ jobs:
   push:
     name: Build, test and push image.
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
 
     permissions:
       contents: read
