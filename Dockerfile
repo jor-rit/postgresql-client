@@ -1,4 +1,4 @@
-FROM alpine:3.22.1
+FROM alpine:3.23.3
 
 ARG UID=1000
 ARG GID=1000
